@@ -6,7 +6,6 @@ import Form from "./components/Form/Form";
 import memories from "./images/memories.png";
 import useStyles from "./styles";
 
-
 // App is the main component that will be rendered in the index.js file
 // It will render the Posts and Form components, which are imported above.
 // The Posts component will render the Post component, which is also imported above.
@@ -16,8 +15,8 @@ const App = () => {
   return(
       <Container maxWidth="lg">
           <AppBar className={classes.appBar} position="static" color="inherit">
-              <Typography variant="h2" align="center">Memories</Typography>
-              <img src={memories} alt="memories" height="auto" />
+              <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
+              <img className={classes.image} src={memories} alt="memories" height="60" />
           </AppBar>
           <Grow in>
             <Container>
