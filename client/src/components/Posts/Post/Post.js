@@ -1,8 +1,8 @@
 import React from "react";
-import useStyles from "../../Form/styles";
+// import useStyles from "../../Form/styles";
 
 const Post = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     return (
         <h1>Form</h1>
     );

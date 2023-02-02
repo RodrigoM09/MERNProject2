@@ -8,8 +8,7 @@ import postRoutes from "./routes/posts.js";
 // and it will also be used to set up the routes of the API
 const app = express();
 
-// This is the route that will be used to get all the posts, it will be called from the client.
-app.use("/posts", postRoutes);
+
 
 // body-parser is a middleware that allows us to access the body of the request
 // and parse it into a JSON object
@@ -20,6 +19,9 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 // cors is a middleware that allows us to make requests to our API from different origins
 app.use(cors());
+
+// This is the route that will be used to get all the posts, it will be called from the client.
+app.use("/posts", postRoutes);
 
 
 const CONNECTION_URL = 'mongodb+srv://rodrigo_marquez:mongodb123@cluster0.xdr04si.mongodb.net/?retryWrites=true&w=majority'
