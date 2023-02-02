@@ -34,7 +34,7 @@ const Post = ({ post }) => {
             </CardContent>
             <CardActions className={classes.cardActions}>
                 <Button size={"small"} color={"primary"} onClick={() => {}}>
-                    <ThumbUpAltIcon fontSize={"small"}/> Like {post.likeCount} Likes
+                    <ThumbUpAltIcon fontSize={"small"}/> Like {post.likeCount}
                 </Button>
                 <Button size={"small"} color={"primary"} onClick={() => {}}>
                     <DeleteIcon fontSize={"small"}/> Delete

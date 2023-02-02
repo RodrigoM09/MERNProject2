@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 
@@ -13,6 +13,9 @@ import useStyles from "./styles";
 // The Posts component will render the Post component, which is also imported above.
 // The Form component will render the FileBase component, which is imported in the Form.js file.
 const App = () => {
+
+    //this is a hook that will store the id of the post that is currently being edited
+    const [currentId, setCurrentId] = useState(null);
 
     //this is a hook that allows us to use the styles defined in the styles.js file
     const classes = useStyles();
@@ -37,10 +40,10 @@ const App = () => {
             <Container>
                 <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
                     <Grid item xs={12} sm={7}>
-                        <Posts />
+                        <Posts setCurrentId={setCurrentId}/>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Form />
+                        <Form currentId={currentId} setCurrentId={setCurrentId}/>
                     </Grid>
 
                 </Grid>

@@ -11,7 +11,7 @@ import { createPost } from "../../actions/posts";
 // We will use the useEffect hook to fetch the data from the server, and store it in the state
 // We will use the useDispatch hook to dispatch an action to the reducer, which will update the state
 // FileBase is a component that allows us to upload a file, and it will return a base64 string, which we can store in the state
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: ''});
     const classes = useStyles();
     const dispatch = useDispatch();
