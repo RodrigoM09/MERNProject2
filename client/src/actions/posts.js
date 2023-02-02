@@ -13,3 +13,16 @@ export const getPosts = () => async (dispatch) => {
 
 }
 
+// Action Creators are functions that return an action,
+// an action is an object that has a type and a payload.
+//createPost is an action creator, it returns an action
+export const createPost = (post) => async (dispatch) => {
+    try{
+        const { data } = await api.createPost(post);
+
+        dispatch({ type: 'CREATE', payload: data });
+    } catch (error){
+        console.log(error);
+    }
+}
+
