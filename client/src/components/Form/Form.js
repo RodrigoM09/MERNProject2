@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+
 
 import useStyles from "./styles";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
+
 
 // Form component is used to create a new memory, so it will be a child of the App component
 // We will use the useState hook to store the data that the user enters into the form
@@ -13,12 +15,19 @@ import { createPost } from "../../actions/posts";
 // FileBase is a component that allows us to upload a file, and it will return a base64 string, which we can store in the state
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: ''});
+
+    const posts = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createPost(postData));
+        if (currentId) {
+            dispatch(updatePost(currentId, postData));
+        } else {
+            dispatch(createPost(postData));
+        }
     }
     const clear = () => {
 

@@ -7,12 +7,8 @@ import moment from "moment";
 
 import useStyles from "./styles";
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
-
-    const setCurrentId = () => {
-
-    }
 
     return (
         <Card className={classes.card}>
