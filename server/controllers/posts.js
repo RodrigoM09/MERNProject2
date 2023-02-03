@@ -44,7 +44,22 @@ export const updatePost = async (req, res) => {
 
         if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id');
 
-        const updatedPost = await PostMessage.findById(_id, post, {new: true});
+        const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...post, _id }, {new: true});
 
         res.json(updatedPost);
+}
+
+// deletePost is the controller for the posts route, it will be used to handle the logic of the route,
+// it will be used to delete a post, it will be called from the client.
+// The first argument is the request, the second is the response, the third is the next function.
+// The id of the post that will be deleted will be sent in the params of the request.
+// The id will be sent from the client, it will be sent in the params of the request, it will be sent as JSON.
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    await PostMessage.findByIdAndRemove(id);
+
+    res.json({ message: "Post deleted successfully." });
 }

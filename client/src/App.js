@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { getPosts } from "./actions/posts";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
-import memories from "./images/memories.png";
+import fitSilhouette from "./images/silhouetteMuscular.png";
 import useStyles from "./styles";
 
 // App is the main component that will be rendered in the index.js file
@@ -28,13 +28,13 @@ const App = () => {
     //the Posts component will render the Post component, which will render the individual posts.
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
 
   return(
       <Container maxWidth="lg">
           <AppBar className={classes.appBar} position="static" color="inherit">
-              <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
-              <img className={classes.image} src={memories} alt="memories" height="60" />
+              <Typography className={classes.heading} variant="h3" align="center">My Workouts</Typography>
+              <img className={classes.image} src={fitSilhouette} alt="memories" height="60" />
           </AppBar>
           <Grow in>
             <Container>
